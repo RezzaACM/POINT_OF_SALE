@@ -3,6 +3,12 @@
     <div class="row">
         <div class="col-md-12">
             <h1>List Menu</h1>
+            <?php if ($this->session->flashdata('flash')): ?>
+            <div class="alert alert-success alert-dismissible" id="alert" role="alert">
+                <p class="text-center"><strong>Success! Item berhasil<?php echo $this->session->flashdata('flash')?></strong></p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <?php endif; ?>
         </div>
     </div> 
 
@@ -10,21 +16,44 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
-                    <h5 class="box-tittle">List of Menu</h5>
+                    <h3 class="box-tittle">List of Menu</h3>
+                    <a href="<?php echo site_url()?>item/tambah" class="btn btn-success" id="tambahItem"
+                    >Tambah Item</a>
                 </div>
                 <div class="box-body">
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
+                                <th>No.</th>
                                 <th>ID ITEM</th>
                                 <th>Nam Item</th>
                                 <th>Jenis Item</th>
                                 <th>Harga Item</th>
-                                <th>Status</th>
+                                <th>Stock Item</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="show">
+                            <?php 
+                            $no = 1;
+                            foreach($getItemAll as $row){?>
+                            <tr>
+                                <td><?php echo $no++?></td>
+                                <td><a id="detailItem" href="<?php echo site_url('item/detail/'.$row['id_item'])?>" ><?php echo $row['id_item'] ?></a></td>
+                                <td><?php echo $row['nama_item'] ?></td>
+                                <td><?php echo $row['jenis_item'] ?></td>
+                                <td><?php echo $row['harga_item'] ?></td>
+                                <?php if ($row['status_item'] == 1){?>
+                                    <td>Tersedia</td>
+                                <?php }else{?>
+                                    <td>Kosong</td>
+                                <?php }?>
+                                <td style="font-size:20px">
+                                    <a onclick="" href="<?php echo site_url('item/edit/'.$row['id_item'])?>" title="edit" id="editItem" class="fa fa-edit"></a> |
+                                    <a href="<?php echo base_url('item/delete/'.$row['id_item'])?>" onclick="return confirm('Are you sure?')" title="hapus" class="fa fa-trash"></a>
+                                </td>
+                            </tr>
+                            <?php }?>
                         </tbody>
                     </table>
                 </div>
@@ -34,35 +63,47 @@
 
 </div>
 <script>
-    $(document).ready(function (){
-        // show_data();
-        $('#myTable').DataTable({
-            'processing' : true,
-            'serverSide' : true,
-            "autoWidth": false,
-            'order'      : [],
-            'ajax'       : {
-                'type'    : 'POST',
-                'url'     : '<?php echo base_url('item/get_item')?>'
-            },
-            "columns": [
-                        {"data": "id_item"},
-                        {"data": "nama_item"},
-                        {"data": "jenis_item"},
-                        {"data": "harga_item"},
-                        { "render": function ( data, type, row ) {  // Tampilkan jenis kelamin
-                        var html = ""
-                        if(row.status_item == 1){ // Jika jenis kelaminnya 1
-                            html = 'Tersedia' // Set laki-laki
-              }else{ // Jika bukan 1
-                            html = 'Tidak Tersedia' // Set perempuan
-                        }
-                        return html; // Tampilkan jenis kelaminnya
-                    }
-                },
-                        {"data": "action"}
-                        // {"data": "item",width:100},
-                    ],
-        });
+$(document).ready( function () {
+    $('#myTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ]
     });
+
+    $(document).on('click','#tambahItem', function(e){
+        e.preventDefault();
+
+        $('.modal-dialog').removeClass('modal-sm');
+        $('.modal-dialog').addClass('modal-md');
+		$('#modalHeader').html('Tambah Data Item');
+        $('#modalContent').load($(this).attr('href'));
+        $('#myModal').modal('show');
+    });
+
+    $('#alert').fadeTo(1500, 500).slideUp(500, function(){
+        $('#alert').slideUp(500);
+    });
+
+    $(document).on('click','#editItem', function(e){
+        e.preventDefault();
+
+        $('.modal-dialog').removeClass('modal-sm');
+        $('.modal-dialog').addClass('modal-md');
+		$('#modalHeader').html('Edit Data Item');
+        $('#modalContent').load($(this).attr('href'));
+        $('#myModal').modal('show');
+    });
+
+    $(document).on('click','#detailItem', function(e){
+        e.preventDefault();
+
+        $('.modal-dialog').removeClass('modal-sm');
+        $('.modal-dialog').addClass('modal-md');
+		$('#modalHeader').html('Detail Item');
+        $('#modalContent').load($(this).attr('href'));
+        $('#myModal').modal('show');
+    });
+});
+
 </script>
