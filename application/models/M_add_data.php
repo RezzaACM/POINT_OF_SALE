@@ -2,8 +2,7 @@
 
 class M_add_data extends CI_Model{
     
-    function add_data_item()
-        {
+    function add_data_item(){
             $id = $this->input->post('id_item',TRUE);
             $nama =$this->input->post('nama_item',TRUE);
             $jnsItem = $this->input->post('kategori',TRUE);
@@ -17,6 +16,13 @@ class M_add_data extends CI_Model{
             
             return $this->db->query($sql);
         }
+    
+    function add_data_kategori($kategori,$user){
+        
+        $sql = "INSERT INTO mt_category VALUES ('','$kategori','$user',now(),'','')";
+        return $this->db->query($sql);
+
+    }
 }
 
 ?>

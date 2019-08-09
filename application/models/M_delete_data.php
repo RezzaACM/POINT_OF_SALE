@@ -9,6 +9,11 @@ class M_delete_data extends CI_Model {
         $this->db->query($sql);
     }
 
+    function delete_kategori($id_kategori){
+        $sql = "DELETE FROM `mt_category` WHERE `mt_category`.`id_kategori` = '$id_kategori' ";
+        $this->db->query($sql);
+    }
+
 }
 
 /* End of file ModelName.php */

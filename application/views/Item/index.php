@@ -26,7 +26,7 @@
                             <tr>
                                 <th>No.</th>
                                 <th>ID ITEM</th>
-                                <th>Nam Item</th>
+                                <th>Nama Item</th>
                                 <th>Kategori</th>
                                 <th>Harga Item</th>
                                 <th>Stock Item</th>

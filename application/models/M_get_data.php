@@ -37,7 +37,11 @@ class M_get_data extends CI_Model{
     function get_data_category(){
         return $this->db->get('mt_category');
     }
-
+    //get data categories by id
+    function get_data_category_id($id_kategori){
+        $sql = "SELECT * FROM mt_category  WHERE id_kategori = '$id_kategori' ";
+        return $this->db->query($sql);
+    }
 }
 
 

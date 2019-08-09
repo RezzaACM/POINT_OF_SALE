@@ -19,6 +19,13 @@ class M_edit_data extends CI_Model{
         $this->db->query($sql);
     }
 
+    function edit_data_kategori($id_kategori,$kategori,$user){
+
+        $sql = "UPDATE `mt_category` SET `id_kategori`='$id_kategori',`kategori`='$kategori',`ts_create_by`='$user',`ts_create`=now(),`ts_update_by`='$user',`ts_update`=now() WHERE `id_kategori`='$id_kategori' "; 
+
+        $this->db->query($sql);
+    }
+
 }
 
 ?>
