@@ -10,12 +10,13 @@ class Item extends CI_Controller {
         $this->load->model('m_get_data','get_data');
         $this->load->model('m_delete_data','delete_data');
         $this->load->model('m_add_data','add_data');
+        $this->load->model('m_edit_data','edit_data');
     }
     
 
     public function index()
     {
-        $data['judul'] = "Dashboard";
+        $data['judul'] = "List Menu";
         $data['getItemAll'] = $this->get_data->get_data_item()->result_array();
         $this->load->view('templates/header',$data);
         $this->load->view('item/index',$data);
@@ -34,6 +35,7 @@ class Item extends CI_Controller {
     }
     public function tambah(){
         $data['generateId'] = $this->get_data->test();
+        $data['category'] =$this->get_data->get_data_category()->result_array();
         $this->load->view('item/tambah',$data);
     }
     public function tambah_act(){
@@ -43,6 +45,7 @@ class Item extends CI_Controller {
         
     }
     public function edit($id_item){
+        $data['category'] =$this->get_data->get_data_category()->result_array();
         $data ['itemId'] = $this->get_data->item_by_id($id_item)->result();
         // var_dump($data);
         $this->load->view('item/edit',$data);
@@ -52,9 +55,11 @@ class Item extends CI_Controller {
         // var_dump($data);
         $this->load->view('item/detail',$data);
     }
-    // public function id(){
-    //     $data = $this->get_data->test();
-    //     var_dump($data);
-    // }
+    public function edit_act(){
+        $this->edit_data->edit_data_item();
+        // echo '<script>alert("ok")</script>';
+        $this->session->set_flashdata('flash', ' diupdate!');
+        redirect('item');
+    }
 
 }

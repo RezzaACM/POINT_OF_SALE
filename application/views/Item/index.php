@@ -27,9 +27,10 @@
                                 <th>No.</th>
                                 <th>ID ITEM</th>
                                 <th>Nam Item</th>
-                                <th>Jenis Item</th>
+                                <th>Kategori</th>
                                 <th>Harga Item</th>
                                 <th>Stock Item</th>
+                                <th>Status Item</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -41,16 +42,17 @@
                                 <td><?php echo $no++?></td>
                                 <td><a id="detailItem" href="<?php echo site_url('item/detail/'.$row['id_item'])?>" ><?php echo $row['id_item'] ?></a></td>
                                 <td><?php echo $row['nama_item'] ?></td>
-                                <td><?php echo $row['jenis_item'] ?></td>
-                                <td><?php echo $row['harga_item'] ?></td>
+                                <td><?php echo $row['kategori'] ?></td>
+                                <td>Rp <?php echo number_format($row['harga_item'], 0,".",".")  ?></td>
+                                <td><?php echo $row['stok_item']?></td>
                                 <?php if ($row['status_item'] == 1){?>
                                     <td>Tersedia</td>
                                 <?php }else{?>
                                     <td>Kosong</td>
                                 <?php }?>
-                                <td style="font-size:20px">
+                                <td class="no-print" style="font-size:20px">
                                     <a onclick="" href="<?php echo site_url('item/edit/'.$row['id_item'])?>" title="edit" id="editItem" class="fa fa-edit"></a> |
-                                    <a href="<?php echo base_url('item/delete/'.$row['id_item'])?>" onclick="return confirm('Are you sure?')" title="hapus" class="fa fa-trash"></a>
+                                    <a href="<?php echo base_url('item/delete/'.$row['id_item'])?>" onclick="return confirm('Anda yakin menghapus data ini ?')" title="hapus" class="fa fa-trash"></a>
                                 </td>
                             </tr>
                             <?php }?>
@@ -65,10 +67,7 @@
 <script>
 $(document).ready( function () {
     $('#myTable').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'print'
-        ]
+        
     });
 
     $(document).on('click','#tambahItem', function(e){

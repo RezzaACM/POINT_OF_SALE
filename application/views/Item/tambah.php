@@ -21,15 +21,28 @@
         <div class="row">
             <label for="jenis" class="control-label col-md-3">Jenis Item</label>
             <div class="col-md-9">
-                <input type="text" class="form-control" id="jenis" name="jenis_item" placeholder="Masukan Tempat Lahir">
+                <select class="form-control" name="kategori" id="" required>
+                    <option value="">-- Kategori --</option>
+                    <?php foreach($category as $cat){ ?>
+                        <option value="<?php echo $cat['id_kategori']?>"><?php echo $cat['kategori']?></option>
+                    <?php }?>
+                </select>
             </div>
         </div>
     </div>
     <div class="form-group">
         <div class="row">
-            <label for="harga" class="control-label col-md-3">harga Item</label>
+            <label for="harga" class="control-label col-md-3">Harga Item</label>
             <div class="col-md-9">
-                <input type="text" class="form-control" id="harga" name="harga_item" placeholder="Masukan Tempat Lahir">
+                <input type="text" class="form-control" id="harga" name="harga_item" placeholder="Masukan Harga Jual" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <label for="stok" class="control-label col-md-3">Input Stok</label>
+            <div class="col-md-9">
+                <input type="number" class="form-control" id="stok" name="stok" placeholder="Masukan Jumlah Stok" required>
             </div>
         </div>
     </div>
