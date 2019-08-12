@@ -26,7 +26,7 @@
     <ul class="sidebar-menu" data-widget="tree">
     <li class="header">MAIN NAVIGATION</li>
     <li class="active">
-        <a href="<?php echo base_url('Home/index')?>">
+        <a href="<?php echo base_url()?>">
         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
     </li>
@@ -41,8 +41,8 @@
         <ul class="treeview-menu">
         <li><a href="<?php echo base_url('item')?>"><i class="fa fa-list"></i> Dafter Menu</a></li>
         <li><a href="<?php echo base_url('kategori')?>"><i class="fa fa-chain"></i> Kategori</a></li>
-        <li><a href="pages/UI/buttons.html"><i class="fa fa-users"></i> Customer </a></li>
-        <li><a href="pages/UI/buttons.html"><i class="fa fa-user-circle"></i> Staff </a></li>
+        <li><a href=""><i class="fa fa-users"></i> Customer </a></li>
+        <li><a href="<?php echo base_url('staff')?>"><i class="fa fa-user-circle"></i> Staff </a></li>
         </ul>
     </li>
     <li class="treeview">

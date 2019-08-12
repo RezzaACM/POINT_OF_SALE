@@ -25,6 +25,13 @@ class M_edit_data extends CI_Model{
 
         $this->db->query($sql);
     }
+    // function edit_data_staff($id,$nama,$kelamin,$notelp,$alamat,$status,$user)
+    function edit_data_staff($id,$nama,$kelamin,$notelp,$alamat,$status,$user)
+    {
+        $sql = "UPDATE `mt_staff` SET `nama_staff` = '$nama',`jns_klmn_staff` = '$kelamin', `no_telp_staff` = '$notelp', `alamat_staff` = '$alamat', `status_staff` = '$status', `ts_update_by` = '$user', `ts_update` = now() WHERE `mt_staff`.`id_staff` = $id ";
+
+        $this->db->query($sql);
+    }
 
 }
 

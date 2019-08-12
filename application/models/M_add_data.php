@@ -23,6 +23,11 @@ class M_add_data extends CI_Model{
         return $this->db->query($sql);
 
     }
+    function add_data_staff($nama,$kelamin,$notelp,$alamat,$user)
+    {
+        $sql = "INSERT INTO mt_staff VALUES ('','$nama','$kelamin','$notelp','$alamat','1','$user',now(),'','')";
+        return $this->db->query($sql);
+    }
 }
 
 ?>

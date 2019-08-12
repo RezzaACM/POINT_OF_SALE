@@ -13,6 +13,7 @@ class M_get_data extends CI_Model{
         return $this->db->query($sql);
     }
 
+    // Id generator Items
     public function test(){
         $data = $this->db->get('mt_items')->num_rows();
         if($data < 1 ){
@@ -40,6 +41,15 @@ class M_get_data extends CI_Model{
     //get data categories by id
     function get_data_category_id($id_kategori){
         $sql = "SELECT * FROM mt_category  WHERE id_kategori = '$id_kategori' ";
+        return $this->db->query($sql);
+    }
+
+    // get data staff
+    function get_data_staff(){
+        return $this->db->get('mt_staff');
+    }
+    function get_data_staff_id($id_staff){
+        $sql = " SELECT * FROM mt_staff WHERE id_staff = '$id_staff' ";
         return $this->db->query($sql);
     }
 }

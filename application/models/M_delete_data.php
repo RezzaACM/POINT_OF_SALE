@@ -13,6 +13,10 @@ class M_delete_data extends CI_Model {
         $sql = "DELETE FROM `mt_category` WHERE `mt_category`.`id_kategori` = '$id_kategori' ";
         $this->db->query($sql);
     }
+    function delete_staff($id_staff){
+        $sql = " DELETE FROM `mt_staff` WHERE `mt_staff`.`id_staff` = '$id_staff' ";
+        $this->db->query($sql);
+    }
 
 }
 
