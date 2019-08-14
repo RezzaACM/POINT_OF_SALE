@@ -52,6 +52,17 @@ class M_get_data extends CI_Model{
         $sql = " SELECT * FROM mt_staff WHERE id_staff = '$id_staff' ";
         return $this->db->query($sql);
     }
+    // get data User
+    function get_data_user(){
+        $sql = " SELECT * FROM `users` JOIN mt_staff ON users.id_staff=mt_staff.id_staff ORDER BY username ASC ";
+        
+        return $this->db->query($sql);
+    }
+    function get_user_id($id_user)
+    {
+        $sql = " SELECT * FROM `users` JOIN mt_staff ON users.id_staff=mt_staff.id_staff WHERE id_user = '$id_user' ";
+        return $this->db->query($sql);
+    }
 }
 
 

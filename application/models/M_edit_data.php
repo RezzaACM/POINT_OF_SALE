@@ -32,6 +32,12 @@ class M_edit_data extends CI_Model{
 
         $this->db->query($sql);
     }
+    function edit_data_user($id_user,$id_staff,$username,$password,$foto,$level_user,$user)
+    {
+        $sql = "UPDATE `users` SET `id_user`= '$id_user',`id_staff`='$id_staff',`username`='$username',`password`='$password',`foto_user`='$foto',`level_user`='$level_user',`ts_update_by`='$user',`ts_update`=now() WHERE `users`.`id_user` = $id_user ";
+
+        $this->db->query($sql);
+    }
 
 }
 

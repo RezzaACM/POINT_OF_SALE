@@ -35,10 +35,20 @@
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background:url(../images/bg-01.jpg)">
 					<span class="login100-form-title-1">
-						Dapur Sunda Bu Yuyu <br> Admin Sign In
+						Dapur Sunda Bu Yuyu <br>Sign In
 					</span>
 				</div>
-
+				<div class="row">
+					<div class="col-md-12">
+						<!-- <h1>List Menu</h1> -->
+						<?php if ($this->session->flashdata('salah')): ?>
+						<div class="alert alert-danger alert-dismissible" id="alert" role="alert">
+							<p class="text-center"><strong><?php echo $this->session->flashdata('salah')?></strong></p>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						</div>
+						<?php endif; ?>
+					</div>
+				</div>
 				<form class="login100-form validate-form" action="<?php echo base_url('login/login_auth')?>" method="post">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
@@ -58,12 +68,6 @@
 							<label class="label-checkbox100" for="ckb1">
 								Remember me
 							</label>
-						</div>
-
-						<div>
-							<a href="#" class="txt1">
-								Forgot Password?
-							</a>
 						</div>
 					</div>
 

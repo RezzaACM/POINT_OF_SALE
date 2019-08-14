@@ -28,6 +28,10 @@ class M_add_data extends CI_Model{
         $sql = "INSERT INTO mt_staff VALUES ('','$nama','$kelamin','$notelp','$alamat','1','$user',now(),'','')";
         return $this->db->query($sql);
     }
+    function add_data_user($id_staff,$username,$password,$foto_user,$level_user,$user){
+        $sql = "INSERT INTO users VALUE ('','$id_staff','$username','$password','$foto_user','$level_user','$user',now(),'','') ";
+        $this->db->query($sql);
+    }
 }
 
 ?>

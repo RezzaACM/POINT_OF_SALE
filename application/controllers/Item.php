@@ -11,6 +11,13 @@ class Item extends CI_Controller {
         $this->load->model('m_delete_data','delete_data');
         $this->load->model('m_add_data','add_data');
         $this->load->model('m_edit_data','edit_data');
+        if($this->session->userdata('login') != true){
+            echo '<script>alert("Anda harus login terlebih dahulu!")
+            window.location = "login"
+            </script>
+                
+            ';
+        }
     }
     
 
@@ -61,5 +68,23 @@ class Item extends CI_Controller {
         $this->session->set_flashdata('flash', ' diupdate!');
         redirect('item');
     }
+    public function update_stock($id_item){
+        $data ['itemId'] = $this->get_data->item_by_id($id_item)->result();
+        $this->load->view('item/update_stock',$data);
+    }
+    public function update_stock_act($id_item){
+        $data = $this->get_data->item_by_id($id_item)->result();
+        // var_dump($data[0]->stok_item);
+        $stok_awal = $data[0]->stok_item;
+        $id = $this->input->post('id');
+        $stok = $this->input->post('stok');
+        
+        $stok_akhir =$stok_awal + $stok;
+        // var_dump($stok_akhir);
 
+        $sql = "UPDATE `mt_items` SET `stok_item` = '$stok_akhir' WHERE `mt_items`.`id_item` = '$id'";
+        $this->db->query($sql);
+        $this->session->set_flashdata('flash', ' diupdate!');
+        redirect('item');
+    }
 }

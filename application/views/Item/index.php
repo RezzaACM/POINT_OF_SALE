@@ -48,11 +48,12 @@
                                 <?php if ($row['status_item'] == 1){?>
                                     <td>Tersedia</td>
                                 <?php }else{?>
-                                    <td>Kosong</td>
+                                    <td>Tidak Siap</td>
                                 <?php }?>
                                 <td class="no-print" style="font-size:20px">
                                     <a onclick="" href="<?php echo site_url('item/edit/'.$row['id_item'])?>" title="edit" id="editItem" class="fa fa-edit"></a> |
-                                    <a href="<?php echo base_url('item/delete/'.$row['id_item'])?>" onclick="return confirm('Anda yakin menghapus data ini ?')" title="hapus" class="fa fa-trash"></a>
+                                    <a href="<?php echo base_url('item/delete/'.$row['id_item'])?>" onclick="return confirm('Anda yakin menghapus data ini ?')" title="hapus" class="fa fa-trash"></a> | 
+                                    <a href="<?php echo base_url('item/update_stock/'.$row['id_item'])?>" id="updateStock" class="fa fa-plus" title="Tambah Stock"></a>
                                 </td>
                             </tr>
                             <?php }?>
@@ -102,6 +103,14 @@ $(document).ready( function () {
 		$('#modalHeader').html('Detail Item');
         $('#modalContent').load($(this).attr('href'));
         $('#myModal').modal('show');
+    });
+    $(document).on('click','#updateStock', function(e){
+        e.preventDefault();
+        $('.modal-dialog').removeClass('modal-sm');
+        $('.modal-dialog').addClass('modal-md');
+		$('#modalHeader').html('Update Stock');
+        $('#modalContent').load($(this).attr('href'));
+        $('#myModal').modal('show');        
     });
 });
 

@@ -25,14 +25,20 @@ class Login extends CI_Controller {
             foreach($user as $row){
                 $user_data = array(
                             'id_user'   => $row->id_user,
+                            'jabatan'   => $row->jabatan_staff,
                             'nama'      => $row->nama_staff,
                             'username'  => $row->username,
                             'foto_user' => $row->foto_user,
                             'level_user'=> $row->level_user,
+                            'last'      => $row->last_login,
                             'login'		=> true
                             );
             }
             $this->session->set_userdata($user_data);
+            $id = $this->session->userdata('id_user');
+            var_dump($id);
+            $sql = " UPDATE `users` SET `last_login` = now() WHERE `users`.`id_user` = $id; ";
+            $this->db->query($sql);
             redirect(base_url());
         }else{
             $this->session->set_flashdata('salah', 'Username atau Password anda Salah!');
@@ -43,6 +49,7 @@ class Login extends CI_Controller {
         
         
     public function logout(){
+        // var_dump($id);
         $this->session->sess_destroy();
         redirect('login');
     }

@@ -38,14 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <div class="row">
-            <label for="stok" class="control-label col-md-3">Input Stok</label>
-            <div class="col-md-9">
-                <input type="number" class="form-control" id="stok" name="stok" placeholder="Masukan Jumlah Stok" required>
-            </div>
-        </div>
-    </div>
+                <input type="hidden" class="form-control" id="stok" name="stok" placeholder="Masukan Jumlah Stok" >
     <div class="form-group">
         <div class="row">
             <label for="deskripsi" class="control-label col-md-3">Deskripsi Item</label>
