@@ -63,6 +63,16 @@ class M_get_data extends CI_Model{
         $sql = " SELECT * FROM `users` JOIN mt_staff ON users.id_staff=mt_staff.id_staff WHERE id_user = '$id_user' ";
         return $this->db->query($sql);
     }
+    function get_data_payment()
+    {
+        $sql = " SELECT * FROM mt_payment_methode ORDER BY nama_payment ASC ";
+        return $this->db->query($sql);
+    }
+    function get_payment_id($id)
+    {
+        $sql = " SELECT * FROM mt_payment_methode WHERE id_payment = '$id' ";
+        return $this->db->query($sql);
+    }
 }
 
 

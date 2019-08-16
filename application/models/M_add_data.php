@@ -32,6 +32,10 @@ class M_add_data extends CI_Model{
         $sql = "INSERT INTO users VALUE ('','$id_staff','$username','$password','$foto_user','$level_user','$user',now(),'','') ";
         $this->db->query($sql);
     }
+    function add_data_payment($nama,$user){
+        $sql = " INSERT INTO mt_payment_methode VALUES ('','$nama','$user',now(),'','') ";
+        $this->db->query($sql);
+    }
 }
 
 ?>

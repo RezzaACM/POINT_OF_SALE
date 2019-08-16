@@ -38,6 +38,12 @@ class M_edit_data extends CI_Model{
 
         $this->db->query($sql);
     }
+    function update_payment($id,$nama,$user)
+    {
+        $sql = " UPDATE mt_payment_methode SET nama_payment = '$nama', ts_update_by = '$user', ts_update = now() WHERE id_payment = '$id' ";
+
+        $this->db->query($sql);
+    }
 
 }
 

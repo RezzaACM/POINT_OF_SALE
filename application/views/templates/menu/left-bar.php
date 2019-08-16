@@ -43,6 +43,7 @@
         <li><a href="<?php echo base_url('kategori')?>"><i class="fa fa-chain"></i> Kategori</a></li>
         <li><a href=""><i class="fa fa-users"></i> Customer </a></li>
         <li><a href="<?php echo base_url('staff')?>"><i class="fa fa-user-circle"></i> Teams </a></li>
+        <li><a href="<?php echo base_url('payment')?>"><i class="fa fa-user-circle"></i> Payment </a></li>
         </ul>
     </li>
     <li class="treeview">
