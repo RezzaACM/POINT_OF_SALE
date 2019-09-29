@@ -18,7 +18,7 @@
                 <div class="box-header">
                     <h3 class="box-tittle">List of Menu</h3>
                     <a href="<?php echo site_url()?>staff/tambah" class="btn btn-success" id="tambahItem"
-                    >Tambah Item</a>
+                    >Tambah Teams</a>
                 </div>
                 <div class="box-body">
                     <table id="myTable" class="table table-bordered table-striped">

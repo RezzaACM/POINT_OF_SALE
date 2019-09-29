@@ -33,6 +33,17 @@ class Transaction extends CI_Controller {
         $this->load->view('transaction/cashier',$data);
         $this->load->view('templates/footer');   
     }
+    public function transaction_act(){
+        $inv = $this->input->post('invoice');
+        $item = $this->input->post('item');
+        $qty = $this->input->post('qty');
+        $kasir = $this->input->post('kasir');
+        $cust = $this->input->post('customer');
+        $tgl = $this->input->post('tanggal');
+
+        var_dump($inv,$item,$qty,$kasir,$cust,$tgl);
+
+    }
 
 }
 

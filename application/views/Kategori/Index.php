@@ -18,7 +18,7 @@
                 <div class="box-header">
                     <h3 class="box-tittle">List of Category</h3>
                     <a href="<?php echo site_url()?>kategori/tambah" class="btn btn-success" id="tambahItem"
-                    >Tambah Item</a>
+                    >Tambah Kategori</a>
                 </div>
                 <div class="box-body">
                     <table id="myTable" class="table table-bordered table-striped">

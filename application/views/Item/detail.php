@@ -6,7 +6,7 @@
             <input type="hidden" name="ts_input" value="<?php echo $itemId[0]->ts_create ?>">
             <label for="id_item" class="control-label col-md-3">ID ITEM</label>
             <div class="col-md-9">
-                <input type="text" name="id_item" id="id_item" class="form-control id_item" placeholder="Masukkan ID Menu" value="<?php echo $itemId[0]->id_item ?>" required autofocus readonly>
+                <input autofocus type="text" name="id_item" id="id_item" class="form-control id_item" placeholder="Masukkan ID Menu" value="<?php echo $itemId[0]->id_item ?>" required autofocus readonly>
                 <span id="cek_nip"></span>
             </div>
         </div>
@@ -32,14 +32,6 @@
             <label for="harga" class="control-label col-md-3">harga Item</label>
             <div class="col-md-9">
                 <input readonly type="number" value="<?php echo $itemId[0]->harga_item ?>" class="form-control" id="harga" name="harga" placeholder="Masukan Tempat Lahir">
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <label for="stok" class="control-label col-md-3">Input Stok</label>
-            <div class="col-md-9">
-                <input readonly type="number" value="<?php echo $itemId[0]->stok_item ?>" class="form-control" id="stok" name="stok" placeholder="Masukan Jumlah Stok" required>
             </div>
         </div>
     </div>

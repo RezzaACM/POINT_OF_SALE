@@ -1,133 +1,171 @@
-<div class="container">
-    <div class="col-md-12">
+<section class="content">
+    <div class="container-fluid">
         <div class="row">
-            <h1> Kasir Dapur Sunda Bu Yuyu</h1>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4">
-            <form action="" method="post" enctype="">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Transaksi</div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="usr">No. Invoice</label>
-                                    <input type="text" name="invoice" value="<?php echo $invoice?>" readonly class="form-control" id="usr">
-                                </div>
-                                <div class="form-group">
-                                    <label for="pwd">Tanggal</label>
-                                    <input disabled type="text" name="date" readonly id="myDate" class="form-control" id="pwd">
-                                </div>
-                                <div class="form-group">
-                                    <label for="user">Kasir</label>
-                                    <input readonly type="text" class="form-control" name="user" id="user" value="<?php echo $this->session->userdata('nama')?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="pembeli">Pelanggan</label>
-                                    <input required type="text" class="form-control" name="pembeli" id="pembeli" value=" ">
+            <div class="col-md-12">
+                <h3>Kasir Dapur Sunda Bu Yuyu</h3>
+                <hr>
+                <div class="col-md-6">
+            <!-- form start -->
+                    <form class="form-horizontal" method="post" action="<?php echo base_url('transaction/transaction_act')?>">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="invoice" class="col-sm-2 control-label">No.Invoice</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="invoice" readonly value="<?php echo $invoice ?>" class="form-control" id="invoice" placeholder="No.Invoice">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="Item" class="col-sm-2 control-label">Nama Item</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="item" class="form-control" id="Item" placeholder="Nama Item">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="qty" class="col-sm-2 control-label">Quantity</label>
+                                <div class="col-sm-5">
+                                    <input type="number" name="qty" class="form-control" id="qty" placeholder="Quantity">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="kasir" class="col-sm-2 control-label">Kasir</label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="kasir" class="form-control" id="kasir" placeholder="Kasir">
+                                </div>
+                                <button class="col-sm-4 btn btn-primary"><i class="fa fa-shopping-cart"></i> Tambahkan</button>
+                            </div>
                         </div>
-                    </div>
                 </div>
-            </form>
-        </div>
-        
-        <div class="col-md-8">
-            <div class="box">
-                <div class="box-body">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID Menu</th>
-                                <th>Nama Menu</th>
-                                <th>Qty</th>
-                                <th>Harga</th>
-                                <th>Sub Total</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="width:20%">
-                                    <div class="form-group">
-                                    <select class="form-control" name="id" id="id">
-                                        <option value=""></option>
-                                    </select>
-                                    </div>
-                                </td>
-                                <td style="width:25%">
-                                    <div class="form-group">
-                                        <input type="text" name="nama_menu" class="form-control">
-                                    </div>
-                                </td>
-                                <td style="width:10%">
-                                    <div class="form-group">
-                                        <input type="number" name="qty" class="form-control">
-                                    </div>          
-                                </td>
-                                <td style="width:20%;">
-                                    <div class="form-group">
-                                        <input type="text" name="harga" class="form-control">
-                                    </div>
-                                </td>
-                                <td style="width:30%;">
-                                    <div class="form-group">
-                                        <input type="text" name="subtotal" class="form-control">
-                                    </div>
-                                </td>
-                                <td>
-                                    <a href="" class="fa fa-remove"></a>
-                                </td>      
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="2" style="border-left:none;">
-                                    <input type="button" class="btn btn-danger" id="addrow" value="Add Row">
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                <div class="col-md-6">
+                    <div class="box-body">
+                    <div class="form-group">
+                                <label for="customer" class="col-sm-2 control-label">Customer</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="customer" class="form-control" id="customer" placeholder="Nama Customer">
+                                </div>
+                            </div>
+                            <div style="margin-top:50px;" class="form-group">
+                                <label for="tanggal" class="col-sm-2 control-label">Tanggal</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="tanggal" class="form-control" readonly="true" id="myDate" placeholder="tanggal">
+                                </div>
+                            </div>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-
     </div>
-</div>
+
+    <div class="box">
+            <!-- /.box-header -->
+        <div class="box-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th>#</th>
+                    <th>ID Item</th>
+                    <th>Nama Item</th>
+                    <th>Harga</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <form action="" class="form-horizontal">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="kasir" class="col-sm-5 control-label">Sub Total</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="kasir" class="form-control" id="kasir" placeholder="Kasir">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="payment" class="col-sm-5 control-label">Payment</label>
+                    <div class="col-sm-7">
+                        <select class="form-control" name="payment" id="payment">
+                            <option value="">--Jenis Payment--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="diskon" class="col-sm-5 control-label">Discount</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="diskon" class="form-control" id="diskon" placeholder="Diskon">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="cash" class="col-sm-5 control-label">Cash</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="cash" class="form-control" id="cash" placeholder="Cash">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <button type="reset" style="width:50%" class="btn btn-danger">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="total" class="col-sm-5 control-label">Grand Total</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="total" class="form-control" id="total" placeholder="Grand Total">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="kembali" class="col-sm-5 control-label">Change</label>
+                    <div class="col-sm-7">
+                        <input type="text" name="kembali" class="form-control" id="kembali" placeholder="Kembalian">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <button type="submit" style="width:50%" class="btn btn-success">Proses Pembayaran</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</section>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
 <script>
     $("#myDate").datepicker({
-    format: "yyyy-mm-dd"
+    format: "yyyy-mm-dd",
+    // read
     }).datepicker("setDate", new Date());
 </script>
-<script>
-    $(document).ready(function(){
-        var counter = 0;
 
-        $(document).on('click','#addrow', function(e){
-        e.preventDefault();
+<!-- <div class="row">
+            <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                <h3 class="box-title">Kasir Dapur Sunda "Bu Yuyu"</h3>
+                </div>
+                /.box-header
+                <div class="box-body">
+                <table class="table table-bordered">
+                </table>
+                </div>
+                <div class="box-footer">
 
-            var newRow = $('<tr>');
-            var cols = '';
-
-        cols += '<td><input type="text" class="form-control" name="name' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="mail' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="phone' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="name' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="mail' + counter + '"/></td>';
-
-        cols += '<td><input type="text" class="form-control" name="phone' + counter + '"/></td>';
-
-        newRow.append(cols);
-        $('table.order-list').append(newRow);
-        counter++;
-        });
-    });
-</script>
+                </div>
+            </div>
+            </div>
+        </div> -->

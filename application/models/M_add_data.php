@@ -7,12 +7,12 @@ class M_add_data extends CI_Model{
             $nama =$this->input->post('nama_item',TRUE);
             $jnsItem = $this->input->post('kategori',TRUE);
             $harga = $this->input->post('harga_item',TRUE);
-            $stok = $this->input->post('stok',TRUE);
+            // $stok = $this->input->post('stok',TRUE);
             $desc = $this->input->post('deskripsi',TRUE);
             $creat_by = $this->session->userdata('username');
             
 
-            $sql = "INSERT INTO `mt_items` (`id_item`, `nama_item`, `id_kategori`, `harga_item`, `stok_item`, `status_item`, `deskripsi_item`, `ts_create_by`, `ts_create`, `ts_update_by`, `ts_update`) VALUES ('$id', '$nama', '$jnsItem', '$harga', '$stok', '1', '$desc', '$creat_by', now(), '', '')";
+            $sql = "INSERT INTO `mt_items` (`id_item`, `nama_item`, `id_kategori`, `harga_item`, `status_item`, `deskripsi_item`, `ts_create_by`, `ts_create`, `ts_update_by`, `ts_update`) VALUES ('$id', '$nama', '$jnsItem', '$harga','1', '$desc', '$creat_by', now(), '', '')";
             
             return $this->db->query($sql);
         }

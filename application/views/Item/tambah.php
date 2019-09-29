@@ -4,7 +4,7 @@
         <div class="row">
             <label for="id_item" class="control-label col-md-3">ID ITEM</label>
             <div class="col-md-9">
-                <input type="text" name="id_item" id="id_item" class="form-control id_item" placeholder="Masukkan ID Menu" readonly value="<?php echo $generateId?>">
+                <input autofocus type="text" name="id_item" id="id_item" class="form-control id_item" placeholder="Masukkan ID Menu" readonly value="<?php echo $generateId?>">
                 <span id="cek_nip"></span>
             </div>
         </div>

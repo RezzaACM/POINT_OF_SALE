@@ -18,7 +18,7 @@
                 <div class="box-header">
                     <h3 class="box-tittle">List Payment</h3>
                     <a href="<?php echo site_url()?>payment/tambah" class="btn btn-success" id="tambahItem"
-                    >Tambah Item</a>
+                    >Tambah Payment Methode</a>
                 </div>
                 <div class="box-body">
                     <table id="myTable" class="table table-bordered table-striped">

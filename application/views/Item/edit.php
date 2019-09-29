@@ -6,7 +6,7 @@
             <input type="hidden" name="ts_input" value="<?php echo $itemId[0]->ts_create ?>">
             <label for="id_item" class="control-label col-md-3">ID ITEM</label>
             <div class="col-md-9">
-                <input type="text" name="id_item" id="id_item" class="form-control id_item" placeholder="Masukkan ID Menu" value="<?php echo $itemId[0]->id_item ?>" required autofocus readonly>
+                <input autofocus type="text" name="id_item" id="id_item" class="form-control id_item" placeholder="Masukkan ID Menu" value="<?php echo $itemId[0]->id_item ?>" required autofocus readonly>
                 <span id="cek_nip"></span>
             </div>
         </div>
@@ -45,22 +45,14 @@
     </div>
     <div class="form-group">
         <div class="row">
-            <label for="stok" class="control-label col-md-3">Input Stok</label>
-            <div class="col-md-9">
-                <input type="number" value="<?php echo $itemId[0]->stok_item ?>" class="form-control" id="stok" name="stok" placeholder="Masukan Jumlah Stok" required>
-            </div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
             <label for="status" class="control-label col-md-3">Status Item</label>
             <div class="col-md-9">
                 <select class="form-control" name="status_item" id="status">
                     <?php if($itemId[0]->status_item > 0){?>
                         <option selected value="1">Tersedia</option>
-                        <option value="0">Stok Kosong</option>
+                        <option value="0">Tidak Siap</option>
                     <?php }else{?>
-                        <option selected value="0">Stok Kosong</option>
+                        <option selected value="0">Tidak Siap</option>
                         <option value="1">Tersedia</option>
                     <?php }?>
                 </select>

@@ -12,9 +12,9 @@ class M_edit_data extends CI_Model{
         $desc = $this->input->post('deskripsi',TRUE);
         $tsInput = $this->input->post('ts_input',TRUE);
         $tsInputBy = $this->session->userdata('username');
-        $stok = $this->input->post('stok',TRUE);
+        // $stok = $this->input->post('stok',TRUE);
 
-        $sql = "UPDATE `mt_items` SET `id_item`='$id',`nama_item`='$nama',`id_kategori`='$jnsItem',`harga_item`='$harga',`stok_item`='$stok',`status_item`='$stat',`deskripsi_item`='$desc',`ts_create_by`='$tsInputBy',`ts_create`= '$tsInput',`ts_update_by`='$tsInputBy',`ts_update`= now() WHERE `id_item` = '$id' ";
+        $sql = "UPDATE `mt_items` SET `id_item`='$id',`nama_item`='$nama',`id_kategori`='$jnsItem',`harga_item`='$harga',`status_item`='$stat',`deskripsi_item`='$desc',`ts_create_by`='$tsInputBy',`ts_create`= '$tsInput',`ts_update_by`='$tsInputBy',`ts_update`= now() WHERE `id_item` = '$id' ";
 
         $this->db->query($sql);
     }
