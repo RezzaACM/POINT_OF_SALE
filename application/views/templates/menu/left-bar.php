@@ -44,7 +44,7 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="<?php echo base_url()?>transaction"><i class="fa fa-print"></i> Aplikasi Kasir </a></li>
-        <li><a href="pages/UI/general.html"><i class="fa fa-list"></i> Riwayat Transaksi </a></li>
+        <li><a href="<?php echo base_url()?>transaction/riwayat"><i class="fa fa-list"></i> Riwayat Transaksi </a></li>
         </ul>
     </li>
     <li class="treeview">
@@ -56,8 +56,8 @@
         </span>
         </a>
         <ul class="treeview-menu">
-        <li><a href="pages/UI/general.html"><i class="fa fa-sticky-note-o"></i> Order </a></li>
-        <li><a href="pages/UI/general.html"><i class="fa fa-list"></i> Order Detail </a></li>
+        <li><a href="pages/UI/general.html"><i class="fa fa-sticky-note-o"></i> Cetak Laporan Penjualan </a></li>
+        <!-- <li><a href="pages/UI/general.html"><i class="fa fa-list"></i> Order Detail </a></li> -->
         </ul>
     </li>
     <li class="">

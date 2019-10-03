@@ -36,6 +36,15 @@ class M_add_data extends CI_Model{
         $sql = " INSERT INTO mt_payment_methode VALUES ('','$nama','$user',now(),'','') ";
         $this->db->query($sql);
     }
+
+    function add_data_order($invoice,$customer,$diskon,$total,$id_user){
+        $sql = "INSERT INTO ts_order VALUES ('$invoice','$customer','$diskon','$total','$id_user',now(),now()) ";
+        $this->db->query($sql);
+    }
+    function add_data_detail_order($invoice,$id_item,$jumlah,$id_payment,$subtotal){
+        $sql = " INSERT INTO ts_order_detail VALUES ('$invoice','$id_item','$jumlah','$id_payment','$subtotal') ";
+        $this->db->query($sql);
+    }
 }
 
 ?>
