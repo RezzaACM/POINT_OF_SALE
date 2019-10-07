@@ -12,28 +12,28 @@ class M_add_data extends CI_Model{
             $creat_by = $this->session->userdata('username');
             
 
-            $sql = "INSERT INTO `mt_items` (`id_item`, `nama_item`, `id_kategori`, `harga_item`, `status_item`, `deskripsi_item`, `ts_create_by`, `ts_create`, `ts_update_by`, `ts_update`) VALUES ('$id', '$nama', '$jnsItem', '$harga','1', '$desc', '$creat_by', now(), '', '')";
+            $sql = "INSERT INTO `mt_items` (`id_item`, `nama_item`, `id_kategori`, `harga_item`, `status_item`, `deskripsi_item`) VALUES ('$id', '$nama', '$jnsItem', '$harga','1', '$desc')";
             
             return $this->db->query($sql);
         }
     
     function add_data_kategori($kategori,$user){
         
-        $sql = "INSERT INTO mt_category VALUES ('','$kategori','$user',now(),'','')";
+        $sql = "INSERT INTO mt_category VALUES ('','$kategori')";
         return $this->db->query($sql);
 
     }
-    function add_data_staff($nama,$kelamin,$notelp,$alamat,$user)
+    function add_data_staff($nama,$kelamin,$notelp,$alamat,$user,$jabatan)
     {
-        $sql = "INSERT INTO mt_staff VALUES ('','$nama','$kelamin','$notelp','$alamat','1','$user',now(),'','')";
+        $sql = "INSERT INTO mt_staff VALUES ('','$nama','$kelamin','$notelp','$alamat','$jabatan','1')";
         return $this->db->query($sql);
     }
     function add_data_user($id_staff,$username,$password,$foto_user,$level_user,$user){
-        $sql = "INSERT INTO users VALUE ('','$id_staff','$username','$password','$foto_user','$level_user','$user',now(),'','') ";
+        $sql = "INSERT INTO users VALUE ('','$id_staff','$username','$password','$foto_user','$level_user','') ";
         $this->db->query($sql);
     }
     function add_data_payment($nama,$user){
-        $sql = " INSERT INTO mt_payment_methode VALUES ('','$nama','$user',now(),'','') ";
+        $sql = " INSERT INTO mt_payment_methode VALUES ('','$nama') ";
         $this->db->query($sql);
     }
 

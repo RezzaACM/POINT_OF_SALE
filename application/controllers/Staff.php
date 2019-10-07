@@ -41,8 +41,9 @@ class Staff extends CI_Controller {
         $notelp = $this->input->post('notelp');
         $alamat = $this->input->post('alamat');
         $user = $this->session->userdata('username');
+        $jabatan = $this->input->post('jabatan');
 
-        $this->add_data->add_data_staff($nama,$kelamin,$notelp,$alamat,$user);
+        $this->add_data->add_data_staff($nama,$kelamin,$notelp,$alamat,$user,$jabatan);
         $this->session->set_flashdata('flash', ' ditambahkan!');
         redirect('staff');
 

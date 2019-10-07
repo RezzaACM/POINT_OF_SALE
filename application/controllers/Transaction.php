@@ -251,6 +251,92 @@ class Transaction extends CI_Controller {
         $this->load->view('transaction/detail',$data);
     }
 
+    public function cetak_laporan(){
+        $data['judul'] = "Cetak Laporan Penjualan";
+        $data['dari'] = $this->input->post('dari');
+        $data['sampai'] = $this->input->post('sampai');
+        // var_dump($data);
+        $data['getReport'] = $this->get_data->get_report($data['dari'],$data['sampai'])->result_array();
+        // var_dump($data);
+        // $data['getReport'] = $this->cetak_laporan_act();
+        // redirect('transaction/cetak_laporan');
+        $this->load->view('templates/header',$data);
+        $this->load->view('transaction/laporan',$data);
+        $this->load->view('templates/footer');
+    }
+    public function generate_pdf(){
+        $dari = $this->input->post('dari');
+        $sampai = $this->input->post('sampai');
+
+        $data['getReport'] = $this->get_data->get_report($dari,$sampai)->result_array();
+        $grandTotal = 0;
+        foreach($data['getReport'] as $row){
+            $grandTotal += $row['total_bayar'];
+        }
+        
+        $html = '<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Document</title>
+        </head>
+        <body>
+        <h1>Laporan Penjualan Dapur Sunda "Bu Yuyu"</h1>
+        <p>Dari Tanggal <span>'. $dari .'</span> s/d <span>'. $sampai .'</span> </p>
+        <table border="1" style="margin:auto; width:100%; " >
+            <tr>
+                <th>#</th>
+                <th>No. Invoice</th>
+                <th>Nama Customer</th>
+                <th>Kasir</th>
+                <th>Order Time</th>
+                <th>Total</th>
+            </tr>';
+        $no = 1;
+        foreach($data['getReport'] as $row){
+            $html .='   <tr>
+                            <td>'. $no++ .'</td>
+                            <td>'. $row['id_invoice'] .'</td>
+                            <td>'. $row['nama_customer'] .'</td>
+                            <td>'. $row['nama_staff'] .'</td>
+                            <td>'. $row['ts_order_date'] .'</td>
+                            <td>Rp. '. number_format($row['total_bayar']) .'</td>
+                        </tr>';
+        }
+          
+            $html.='<tr>
+                        <td style="text-align:center" colspan="5"><b>Grand Total</b></td>
+                        <td colspan="1"><b>Rp.'. number_format($grandTotal,0,".",".") .'</b></td>
+                    </tr>
+                </table>
+                </body>
+                </html>';
+
+        $mpdf = new \Mpdf\Mpdf();
+        // $pdf = new FPDF();
+        $mpdf->AddPage();
+        // $mpdf->AddPage();
+        $mpdf->WriteHTML($html);
+        $mpdf->Output("Laporan_penjualan.pdf", 'F');
+        $mpdf->Output();
+    }
+    // public function cetak_laporan_act(){
+    //     $data['judul'] = "Cetak Laporan Penjualan";
+    //     $dari = $this->input->post('dari');
+    //     $sampai = $this->input->post('sampai');
+    //     // var_dump($dari,$sampai);
+    //     $data['getReport'] = $this->get_data->get_report($dari,$sampai)->result_array();
+    //     // redirect('transaction/cetak_laporan');
+    //     $this->load->view('templates/header',$data);
+    //     $this->load->view('transaction/laporan',$data);
+    //     $this->load->view('templates/footer');
+    //     // return $data;
+    //     // redirect('transaction/cetak_laporan');
+
+    // }
+
 }
 
 /* End of file Controllername.php */

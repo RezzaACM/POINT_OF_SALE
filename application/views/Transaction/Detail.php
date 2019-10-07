@@ -57,7 +57,11 @@ foreach($invoiceDetail as $row){
                     <td width="100px">Harga</td>
                     <td width="100px">Total</td>
                 </tr>
-                <?php foreach($invoiceDetail as $row){ ?>
+                <?php foreach($invoiceDetail as $row){ 
+                    
+                    // var_dump($row);
+                    
+                ?>
                 <tr>
                     <td><?php echo $row['nama_item'] ?></td>
                     <td><?php echo $row['jumlah_order'] ?></td>

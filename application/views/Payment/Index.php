@@ -5,7 +5,7 @@
             <h1>List Payment</h1>
             <?php if ($this->session->flashdata('flash')): ?>
             <div class="alert alert-success alert-dismissible" id="alert" role="alert">
-                <p class="text-center"><strong>Success! Item berhasil<?php echo $this->session->flashdata('flash')?></strong></p>
+                <p class="text-center"><strong>Success! Payment berhasil<?php echo $this->session->flashdata('flash')?></strong></p>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <?php endif; ?>

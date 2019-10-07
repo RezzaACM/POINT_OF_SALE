@@ -112,7 +112,7 @@
                 <div class="form-group">
                     <label for="payment" class="col-sm-5 control-label">Payment</label>
                     <div class="col-sm-7">
-                        <select class="form-control" name="payment" id="payment">
+                        <select required class="form-control" name="payment" id="payment">
                             <option value="">--Jenis Payment--</option>
                             <?php foreach ($payment as $row){ ?>
                                 <option value="<?php echo $row->id_payment?>"><?php echo $row->nama_payment?></option>
@@ -135,7 +135,7 @@
                 <div class="form-group">
                     <label for="cash" class="col-sm-5 control-label">Cash</label>
                     <div class="col-sm-7">
-                        <input type="text" name="cash" class="form-control" id="cash" placeholder="Cash">
+                        <input required type="text" name="cash" class="form-control" id="cash" placeholder="Cash">
                     </div>
                 </div>
             </div>

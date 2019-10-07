@@ -56,7 +56,7 @@
         </span>
         </a>
         <ul class="treeview-menu">
-        <li><a href="pages/UI/general.html"><i class="fa fa-sticky-note-o"></i> Cetak Laporan Penjualan </a></li>
+        <li><a href="<?php echo base_url('transaction/cetak_laporan')?>"><i class="fa fa-sticky-note-o"></i> Cetak Laporan Penjualan </a></li>
         <!-- <li><a href="pages/UI/general.html"><i class="fa fa-list"></i> Order Detail </a></li> -->
         </ul>
     </li>

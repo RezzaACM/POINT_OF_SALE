@@ -2,10 +2,10 @@
     
     <div class="row">
         <div class="col-md-12">
-            <h1>List Menu</h1>
+            <h1>List Teams</h1>
             <?php if ($this->session->flashdata('flash')): ?>
             <div class="alert alert-success alert-dismissible" id="alert" role="alert">
-                <p class="text-center"><strong>Success! Item berhasil<?php echo $this->session->flashdata('flash')?></strong></p>
+                <p class="text-center"><strong>Success! Teams berhasil<?php echo $this->session->flashdata('flash')?></strong></p>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <?php endif; ?>
@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-tittle">List of Menu</h3>
+                    <h3 class="box-tittle">List of Teams</h3>
                     <a href="<?php echo site_url()?>staff/tambah" class="btn btn-success" id="tambahItem"
                     >Tambah Teams</a>
                 </div>

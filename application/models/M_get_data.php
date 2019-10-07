@@ -87,11 +87,11 @@ class M_get_data extends CI_Model{
         $sql = " SELECT * FROM ts_order_detail a JOIN mt_payment_methode b ON a.id_payment=b.id_payment JOIN mt_items c ON a.id_item=c.id_item JOIN ts_order d ON a.id_invoice=d.id_invoice JOIN users e ON d.id_user=e.id_user JOIN mt_staff f ON e.id_staff=f.id_staff  WHERE a.id_invoice='$id' ";
         return $this->db->query($sql);
     }
-    function get_report(){
+    function get_report($dari,$sampai){
         $sql =  "SELECT * FROM ts_order a 
         JOIN users b ON a.id_user = b.id_user 
         JOIN mt_staff c ON c.id_staff=b.id_staff 
-        WHERE a.ts_order_date BETWEEN '2019-09-25' AND '2019-10-02' ";
+        WHERE a.ts_order_date BETWEEN '$dari' AND '$sampai' ";
 
         return $this->db->query($sql);
     }
