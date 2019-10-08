@@ -66,7 +66,7 @@
 <script>
 $(document).ready( function () {
     $('#myTable').DataTable({
-        
+        "order":[[0,'asc']]
     });
 
     $(document).on('click','#tambahItem', function(e){

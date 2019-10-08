@@ -30,7 +30,9 @@
         <ul class="treeview-menu">
         <li><a href="<?php echo base_url('item')?>"><i class="fa fa-list"></i> Dafter Menu</a></li>
         <li><a href="<?php echo base_url('kategori')?>"><i class="fa fa-chain"></i> Kategori</a></li>
-        <li><a href="<?php echo base_url('staff')?>"><i class="fa fa-user-circle"></i> Teams </a></li>
+        <?php if($this->session->userdata('level_user') == 1){?>
+            <li><a href="<?php echo base_url('staff')?>"><i class="fa fa-user-circle"></i> Teams </a></li>
+        <?php }?>
         <li><a href="<?php echo base_url('payment')?>"><i class="fa fa-money"></i> Payment </a></li>
         </ul>
     </li>
@@ -60,11 +62,13 @@
         <!-- <li><a href="pages/UI/general.html"><i class="fa fa-list"></i> Order Detail </a></li> -->
         </ul>
     </li>
+    <?php if($this->session->userdata('level_user') == 1){?>
     <li class="">
         <a href="<?php echo base_url('user')?>">
         <i class="fa fa-user"></i> <span>User Setting</span>
         </a>
     </li>
+    <?php }?>
     <li class="">
         <a onclick="return confirm('Anda yakin ingin keluar ?')" href="<?php echo base_url('login/logout')?>">
         <i class="fa fa-power-off"></i> <span>Logout</span>

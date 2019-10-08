@@ -141,14 +141,28 @@ class Transaction extends CI_Controller {
             var_dump($subtotal);
             $this->add_data->add_data_detail_order($invoice_dt,$menu_dt,$jumlah,$id_payment,$subtotal);
         }
-        $this->cart->destroy();
-        $this->printPDF();
+        $this->printPDF($diskon,$total,$id_payment);
         redirect('transaction');
         // var_dump($customer,$menu);
     }
-    public function printPDF(){
+    public function printPDF($diskon,$total,$id_payment){
         // require_once __DIR__ . '/vendor/autoload.php';
-        $data = '
+        $data['getPayment'] = $this->get_data->get_payment_id($id_payment)->result_array();
+        foreach($data['getPayment'] as $row){
+            $payment = $row['nama_payment'];
+        }
+        foreach ($this->cart->contents() as $items){
+            $customer = $items['option']['customer'];
+            $invoice = $items['option']['invoice'];
+            $kasir = $items['option']['kasir'];
+            $tanggal = $items['option']['tgl'];
+            
+            // $menu = $items['name'];
+
+            // var_dump($price);
+        }
+        
+        $html = '
         <!DOCTYPE html>
         <html>
         <head>
@@ -161,58 +175,60 @@ class Transaction extends CI_Controller {
                 <tr>
                     <td>No.Invoice</td>
                     <td colspan="5">:</td>
-                    <td>LOEKM-001</td>
+                    <td>'. $invoice .'</td>
                 </tr>
                 <tr>
                     <td>Kasir</td>
                     <td colspan="5">:</td>
-                    <td>LOEKM-001</td>
+                    <td>'.$kasir.'</td>
                 </tr>
                 <tr>
                     <td>Customer</td>
                     <td colspan="5">:</td>
-                    <td>LOEKM-001</td>
+                    <td>'.$customer.'</td>
                 </tr>
                 <tr>
                     <td>Tanggal</td>
                     <td colspan="5">:</td>
-                    <td>LOEKM-001</td>
+                    <td>'. $tanggal .'</td>
                 </tr>
             </table>
-            <table>
+            <table border="1">
                 <tr>
                     <td width="100px">Nama Item</td>
                     <td width="100px">Jumlah</td>
                     <td width="100px">Harga</td>
                     <td width="100px">Total</td>
-                </tr>
-                <tr>
-                    <td>Ayam Bakar</td>
-                    <td>2</td>
-                    <td>50000</td>
-                    <td>100000</td>
-                </tr>
-            </table>
+                </tr>';
+                foreach ($this->cart->contents() as $items){
+                $html .='<tr>
+                        <td>'.$items['name'].'</td>
+                        <td>'.$items['qty'].'</td>
+                        <td>'.$items['price'].'</td>
+                        <td>'.$items['subtotal'].'</td>
+                    </tr>';
+                }  
+            $html .='</table>
             <table>
                 <tr>
                     <td>Payment</td>
                     <td>:</td>
-                    <td>Cash</td>
+                    <td>'.$payment.'</td>
                 </tr>
                 <tr>
                     <td>Subtotal</td>
                     <td>:</td>
-                    <td>Rp.10.000</td>
+                    <td>'.$this->cart->total().'</td>
                 </tr>
                 <tr>
                     <td>Diskon</td>
                     <td>:</td>
-                    <td>50%</td>
+                    <td>'.$diskon.'</td>
                 </tr>
                 <tr>
                     <td>Grand Total</td>
                     <td>:</td>
-                    <td>100.000</td>
+                    <td>'.$total.'</td>
                 </tr>
             </table>
         </section>
@@ -225,16 +241,18 @@ class Transaction extends CI_Controller {
         // $pdf = new FPDF();
         $mpdf->AddPage();
         // $mpdf->AddPage();
-        $mpdf->WriteHTML($data);
+        $mpdf->WriteHTML($html);
+        $mpdf->Output("Invoice.pdf");
         $mpdf->Output();
-
+        $this->cart->destroy();
         redirect('transaction');
+
     }
 
     public function riwayat(){
         $data['judul'] = "Riwayat Transaksi";
         $data['getRiwayat'] = $this->get_data->riwayat_transaksi()->result_array();
-        $kasir = $data['getRiwayat'][0]['id_user'];
+        // $kasir = $data['getRiwayat'][0]['id_user'];
 // /        var_dump($kasir);
         // $data['kasir']= $this->get_data->get_kasir()->result_array();
         // var_dump($data2);
@@ -284,7 +302,7 @@ class Transaction extends CI_Controller {
         </head>
         <body>
         <h1>Laporan Penjualan Dapur Sunda "Bu Yuyu"</h1>
-        <p>Dari Tanggal <span>'. $dari .'</span> s/d <span>'. $sampai .'</span> </p>
+        <p>Dari Tanggal <span><b>'. $dari .'</b></span> s/d <span><b>'. $sampai .'</b></span> </p>
         <table border="1" style="margin:auto; width:100%; " >
             <tr>
                 <th>#</th>
@@ -311,16 +329,55 @@ class Transaction extends CI_Controller {
                         <td colspan="1"><b>Rp.'. number_format($grandTotal,0,".",".") .'</b></td>
                     </tr>
                 </table>
+                <table style="margin:auto; width:100%; ">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align:right">Tangerang,</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align:right">Owner Dapur Sunda "Bu Yuyu"</td>
+                    </tr>
+                </table>
+                <table style="margin:auto; width:100%; ">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align:right">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align:right">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align:right">&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <td colspan="4" style="text-align:right"><b><u>Santi Yulianti</u></b></td>
+                </tr>
+                </table>
                 </body>
                 </html>';
+                foreach($data['getReport'] as $row){
+                    $invoice = $row['id_invoice'];
+                }
 
         $mpdf = new \Mpdf\Mpdf();
         // $pdf = new FPDF();
         $mpdf->AddPage();
         // $mpdf->AddPage();
         $mpdf->WriteHTML($html);
-        $mpdf->Output("Laporan_penjualan.pdf", 'F');
-        $mpdf->Output();
+        $mpdf->Output("Laporan_penjualan $dari s/d $sampai .pdf", 'D');
+        // $mpdf->Output();
     }
     // public function cetak_laporan_act(){
     //     $data['judul'] = "Cetak Laporan Penjualan";

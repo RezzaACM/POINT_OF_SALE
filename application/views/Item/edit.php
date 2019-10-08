@@ -3,7 +3,7 @@
 <div class="col-md-12">
     <div class="form-group">
         <div class="row">
-            <input type="hidden" name="ts_input" value="<?php echo $itemId[0]->ts_create ?>">
+            <!-- <input type="hidden" name="ts_input" value="<?php echo $itemId[0]->ts_create ?>"> -->
             <label for="id_item" class="control-label col-md-3">ID ITEM</label>
             <div class="col-md-9">
                 <input autofocus type="text" name="id_item" id="id_item" class="form-control id_item" placeholder="Masukkan ID Menu" value="<?php echo $itemId[0]->id_item ?>" required autofocus readonly>

@@ -6,11 +6,17 @@
     footer{
         visibility: hidden;
     }
+    h4{
+        visibility: hidden;
+    }
+    .modal-header{
+        visibility: hidden;
+    }
 
 }
 </style>
 
-<section style="width:50%;">
+<section id="section" style="width:50%;">
 <?php
 $subtotal = 0;
 foreach($invoiceDetail as $row){
@@ -97,7 +103,7 @@ foreach($invoiceDetail as $row){
 
 <div class="modal-footer">
         <!-- <button class='btn btn-danger' data-dismiss='modal' id="cancel"></button> -->
-        <button class='btn btn-primary' id="simpanItem"></button> 
+        <button class='btn btn-primary' onclick="myFunction()" id="simpanItem"></button> 
     </div>
 
 </section>
@@ -118,8 +124,13 @@ foreach($invoiceDetail as $row){
 <script>
     $(document).ready(function(){
         $(document).on('click','#simpanItem',function(e){
-            e.preventDefault();
+            $("#section").show();
             window.print();
         });
     });
 </script>
+<!-- <script>
+function myFunction() {
+  window.print();
+}
+</script> -->

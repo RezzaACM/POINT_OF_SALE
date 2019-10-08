@@ -135,7 +135,7 @@
                 <div class="form-group">
                     <label for="cash" class="col-sm-5 control-label">Cash</label>
                     <div class="col-sm-7">
-                        <input required type="text" name="cash" class="form-control" id="cash" placeholder="Cash">
+                        <input type="text" name="cash" class="form-control" id="cash" placeholder="Cash">
                     </div>
                 </div>
             </div>
@@ -172,8 +172,8 @@
 
 
 </section>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" href="<?php echo base_url()?>assets/manual/css/bootstrap-datepicker.css">
+<script src="<?php echo base_url()?>assets/manual/js/bootstrap-datepicker.js"></script>
 <script>
     $("#myDate").datepicker({
     format: "yyyy-mm-dd",
