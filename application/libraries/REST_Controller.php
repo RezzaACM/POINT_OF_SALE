@@ -239,7 +239,7 @@ trait REST_Controller {
     /**
      * @var bool
      */
-    private $auth_override;
+    protected $auth_override;
 
     /**
      * Extend this function to apply additional checking early on in the process
@@ -387,7 +387,7 @@ trait REST_Controller {
         if ($this->request->format && $this->request->body)
         {
             $this->request->body = Format::factory($this->request->body, $this->request->format)->to_array();
-            
+
         // Assign payload arguments to proper method container
             $this->{'_'.$this->request->method.'_args'} = $this->request->body;
         }
@@ -748,7 +748,19 @@ trait REST_Controller {
             }
             else
             {
-                ob_end_flush();
+                if (is_callable('fastcgi_finish_request')) 
+                {
+                    // Terminates connection and returns response to client on PHP-FPM.
+                    $this->output->_display();
+                    ob_end_flush();
+                    fastcgi_finish_request();
+                    ignore_user_abort(true);
+                }
+                else
+                {
+                    // Legacy compatibility.
+                    ob_end_flush();
+                }
             }
 
             // Otherwise dump the output automatically

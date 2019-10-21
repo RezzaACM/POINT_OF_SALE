@@ -23,11 +23,19 @@ class User extends CI_Controller {
 
     public function index()
     {
-        $data['judul'] ='User Control';
-        $data['users'] = $this->get_data->get_data_user()->result();
-        $this->load->view('templates/header',$data);
-        $this->load->view('users/index',$data);
-        $this->load->view('templates/footer');
+        if ($this->session->userdata('level_user') == 1){
+            $data['judul'] ='User Control';
+            $data['users'] = $this->get_data->get_data_user()->result();
+            $this->load->view('templates/header',$data);
+            $this->load->view('users/index',$data);
+            $this->load->view('templates/footer');
+        }else{
+            echo '<script>alert("Access denied!")
+            window.location = "home"
+            </script>
+                
+            ';
+        }
     }
     public function tambah(){
         $data['staff'] = $this->get_data->get_data_staff()->result_array();

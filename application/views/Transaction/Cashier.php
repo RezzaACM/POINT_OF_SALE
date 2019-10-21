@@ -20,7 +20,7 @@
                             <div class="form-group">
                                 <label for="Item" class="col-sm-2 control-label">Nama Item</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="item" class="form-control" id="item" placeholder="Nama Item">
+                                    <input type="text" name="item" class="form-control" required id="item" placeholder="Nama Item">
                                     <input type="hidden" name="price" class="form-control" id="price" placeholder="Nama Item">
                                     <input type="hidden" name="id" class="form-control" id="id" placeholder="Nama Item">
                                 </div>
@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label for="qty" class="col-sm-2 control-label">Quantity</label>
                                 <div class="col-sm-5">
-                                    <input type="number" name="qty" class="form-control" id="qty" placeholder="Quantity">
+                                    <input type="number" required name="qty" class="form-control" id="qty" placeholder="Quantity">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -49,7 +49,7 @@
                                     <?php $cart = $this->cart->contents();
                                         if(empty($cart)){
                                     ?>
-                                    <input type="text" name="customer" value="" class="form-control" id="customer" placeholder="Nama Customer">
+                                    <input type="text" required name="customer" value="" class="form-control" id="customer" placeholder="Nama Customer">
                                     <?php }else{?>
                                     <input type="text" name="customer" readonly value="<?php echo $cust?>" class="form-control" id="customer" placeholder="Nama Customer">
                                     <?php }?>

@@ -1,3 +1,13 @@
+<style>
+
+    @media print{
+        #hidden{
+            visibility: hidden;
+        }
+    }
+
+</style>
+<section id="hidden">
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -98,8 +108,9 @@
     </div>
 
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+</section>
+<link rel="stylesheet" href="<?php echo base_url()?>assets/Manual/css/bootstrap-datepicker.css">
+<script src="<?php echo base_url()?>assets/Manual/js/bootstrap-datepicker.js"></script>
 <script>
     $("#myDate").datepicker({
     format: "yyyy-mm-dd",
@@ -108,5 +119,23 @@
     $("#myDateSampai").datepicker({
     format: "yyyy-mm-dd",
     // read
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#myTable').DataTable({
+        
+        });
+
+        $(document).on('click','#print', function(e){
+            e.preventDefault();
+
+            $('.modal-dialog').removeClass('modal-sm');
+            $('.modal-dialog').addClass('modal-md');
+            $('#modalHeader').html('Detail Item');
+            $('#modalContent').load($(this).attr('href'));
+            $('#myModal').modal('show');
+        });
+
     });
 </script>

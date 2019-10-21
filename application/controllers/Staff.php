@@ -24,11 +24,19 @@ class Staff extends CI_Controller {
 
     public function index()
     {
-        $data['judul'] = "Staff";
-        $data['staff'] = $this->get_data->get_data_staff()->result();
-        $this->load->view('templates/header',$data);
-        $this->load->view('staff/index',$data);
-        $this->load->view('templates/footer');
+        if ($this->session->userdata('level_user') == 1){
+            $data['judul'] = "Staff";
+            $data['staff'] = $this->get_data->get_data_staff()->result();
+            $this->load->view('templates/header',$data);
+            $this->load->view('staff/index',$data);
+            $this->load->view('templates/footer');
+        }else{
+            echo '<script>alert("Access denied!")
+            window.location = "home"
+            </script>
+                
+            ';
+        }
     }
     public function tambah()
     {
