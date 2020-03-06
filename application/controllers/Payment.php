@@ -12,6 +12,7 @@ class Payment extends CI_Controller {
         $this->load->model('m_get_data','get_data');
         $this->load->model('m_delete_data','delete_data');
         $this->load->model('m_edit_data','edit_data');
+        $this->load->library('session');
     }
     
 

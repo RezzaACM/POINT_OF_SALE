@@ -9,7 +9,7 @@ class M_get_data extends CI_Model{
     }
     //get data by id item
     public function item_by_id($id_item){
-        $sql = "SELECT * FROM mt_items JOIN mt_category ON mt_items.id_kategori=mt_items.id_kategori WHERE id_item = '$id_item' ";
+        $sql = "SELECT * FROM mt_items JOIN mt_category ON mt_items.id_kategori= mt_category.id_kategori WHERE id_item = '$id_item' ";
         return $this->db->query($sql);
     }
 

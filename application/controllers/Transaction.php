@@ -13,6 +13,7 @@ class Transaction extends CI_Controller {
         $this->load->model('m_add_data','add_data');
         $this->load->model('m_edit_data','edit_data');
         $this->load->library('cart');
+        $this->load->library('session');
         if($this->session->userdata('login') != true){
             echo '<script>alert("Anda harus login terlebih dahulu!")
             window.location = "login"

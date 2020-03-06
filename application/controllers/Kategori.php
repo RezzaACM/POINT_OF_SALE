@@ -12,6 +12,7 @@ class Kategori extends CI_Controller {
         $this->load->model('M_add_data','add_data');
         $this->load->model('M_delete_data','delete_data');
         $this->load->model('M_edit_data','edit_data');
+        $this->load->library('session');
         $this->load->library('form_validation');
         if($this->session->userdata('login') != true){
             echo '<script>alert("Anda harus login terlebih dahulu!")
